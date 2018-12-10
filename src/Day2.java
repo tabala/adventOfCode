@@ -7,9 +7,9 @@ public class Day2 {
         Day2 day2 = new Day2();
         List<String> strings = day2.saveToList();
         int checkSum = day2.calculateCheckSum(strings);
-        System.out.println(checkSum);
+        System.out.println("first answer: " + checkSum);
         String commonBoxId = day2.findCommonBoxId(strings);
-        System.out.println(commonBoxId);
+        System.out.println("second answer: " + commonBoxId);
     }
 
     public List<String> saveToList() {
@@ -82,24 +82,23 @@ public class Day2 {
 
         for (int i = 0; i < strings.size(); i++) {
             String firstString = strings.get(i);
-            for (int j = i+1; j < strings.size(); j++) {
+            for (int j = i + 1; j < strings.size(); j++) {
                 String secondString = strings.get(j);
                 int fail = 0;
                 int wrongChar = 0;
-                for (int k = 0; k < firstString.length(); k++) {
-                    if (firstString.charAt(k) != secondString.charAt(k))
-                        fail++;
-                        wrongChar = k;
-                }
-                if (fail < 2){
-                    sb = new StringBuilder(firstString);
-                    sb.deleteCharAt(wrongChar);
-                    System.out.println("i exist " + firstString + " " + secondString);
-                }
+                    for (int k = 0; k < firstString.length(); k++) {
+                        if (firstString.charAt(k) != secondString.charAt(k)) {
+                            fail++;
+                            wrongChar = k;
+                        }
+                    }
+                    if (fail < 2) {
+                        sb = new StringBuilder(firstString);
+                        sb.deleteCharAt(wrongChar);
+                    }
 
+                }
             }
-        }
-
 
         return sb.toString();
     }
